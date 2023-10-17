@@ -46,26 +46,42 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          height: 80,
+          height: 50,
           width: double.infinity,
           decoration: BoxDecoration(
             color: const Color.fromARGB(232, 232, 232, 232),
             borderRadius: BorderRadius.circular(40),
           ),
-          child: TextButton.icon(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                const Color.fromARGB(255, 202, 193, 255),
-              ),
-            ),
-            onPressed: () {},
-            icon: const Icon(
-              CupertinoIcons.refresh_thick,
-              color: Colors.white,
-            ),
-            label: Text(
-              'بروزرسانی',
-              style: Theme.of(context).textTheme.headlineMedium,
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 50,
+                  child: TextButton.icon(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        const Color.fromARGB(255, 202, 193, 255),
+                      ),
+                      // shape: MaterialStateProperty.all(
+                      //   RoundedRectangleBorder(
+                      //     borderRadius: BorderRadius.circular(1000),
+                      //   ),
+                      // ),
+                    ),
+                    onPressed: () =>
+                        _showSnakBar(context, 'Updated succesfully.'),
+                    icon: const Icon(
+                      CupertinoIcons.refresh_thick,
+                      color: Colors.black,
+                    ),
+                    label: Text(
+                      'Update',
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -77,4 +93,18 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+void _showSnakBar(BuildContext context, String msg) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(
+        msg,
+        style: const TextStyle(
+          fontSize: 23,
+        ),
+      ),
+      backgroundColor: Colors.green,
+    ),
+  );
 }
