@@ -56,31 +56,29 @@ class _MyHomePageState extends State<MyHomePage> {
             textDirection: TextDirection.rtl,
             child: Row(
               children: [
-                SizedBox(
-                  height: 50,
-                  child: TextButton.icon(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                        const Color.fromARGB(255, 202, 193, 255),
-                      ),
-                      // shape: MaterialStateProperty.all(
-                      //   RoundedRectangleBorder(
-                      //     borderRadius: BorderRadius.circular(1000),
-                      //   ),
-                      // ),
+                TextButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      const Color.fromARGB(255, 202, 193, 255),
                     ),
-                    onPressed: () =>
-                        _showSnakBar(context, 'Updated succesfully.'),
-                    icon: const Icon(
-                      CupertinoIcons.refresh_thick,
-                      color: Colors.black,
-                    ),
-                    label: Text(
-                      'Update',
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
+                    // shape: MaterialStateProperty.all(
+                    //   RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(1000),
+                    //   ),
+                    // ),
+                  ),
+                  onPressed: () =>
+                      _showSnakBar(context, 'Updated succesfully.'),
+                  icon: const Icon(
+                    CupertinoIcons.refresh_thick,
+                    color: Colors.black,
+                  ),
+                  label: Text(
+                    'Update',
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
+                Text('Last Updates ${_getTime()}')
               ],
             ),
           ),
@@ -92,6 +90,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  String _getTime() {
+    return '12:00';
   }
 }
 
